@@ -1,88 +1,108 @@
-# 🛡️ PhishShield – Phishing URL Detection System
+# 🛡️ PhishShield – Machine Learning Based Phishing URL Detection System
 
-**PhishShield** is a cybersecurity project designed to identify potentially malicious and phishing URLs. It analyzes a given URL and determines whether it is **Safe or Suspicious**, helping users avoid phishing attacks, fraudulent websites, and online scams.
+**PhishShield** is a cybersecurity web application designed to identify potentially malicious and phishing URLs using Machine Learning. It analyzes submitted website URLs and predicts whether they are likely to be **Safe or Phishing**, helping users make informed decisions before visiting unfamiliar websites.
 
-The goal of PhishShield is to provide a simple and accessible tool that helps users make safer decisions before visiting unknown websites.
+The application uses a trained **Gradient Boosting Classifier** and URL feature extraction techniques to identify suspicious patterns and classify potentially dangerous websites.
+
+PhishShield provides a modern, responsive web interface that allows users to scan URLs and receive instant prediction results.
 
 ---
 
 ## 📌 Problem Statement
 
-Phishing attacks are one of the most common cybersecurity threats on the internet. Attackers create fake websites that imitate legitimate platforms such as banking portals, social media websites, and e-commerce platforms to steal sensitive information.
+Phishing attacks are one of the most common cybersecurity threats on the internet. Attackers create fraudulent websites that imitate legitimate platforms such as banking portals, social media websites, and e-commerce platforms to steal sensitive information.
 
-Many users cannot easily distinguish between legitimate URLs and malicious URLs. A phishing link may look almost identical to a trusted website, making it difficult to identify the threat manually.
+These malicious websites often use URLs that closely resemble legitimate domains, making it difficult for ordinary users to identify phishing attempts manually.
 
-**Problem:** There is a need for a simple and efficient system that can analyze URLs and help users identify potentially malicious websites before accessing them.
+**Problem:** There is a need for an intelligent and accessible system that can analyze website URLs and help users identify potentially malicious websites before accessing them.
 
-**Solution:** PhishShield analyzes the structure and characteristics of a submitted URL to determine whether it is likely to be legitimate or potentially malicious.
+**Solution:** PhishShield uses Machine Learning algorithms and URL feature extraction techniques to analyze submitted URLs and classify them as potentially legitimate or phishing. The results are displayed through a user-friendly web interface.
 
 ---
 
 ## 🎯 Project Objectives
 
-- Detect potentially malicious and phishing URLs.
-- Identify suspicious URL patterns and characteristics.
-- Provide users with clear Safe or Suspicious results.
-- Raise awareness about phishing attacks and online security.
-- Build a user-friendly interface for URL analysis.
-- Explore machine learning techniques for phishing detection.
+- Detect potentially malicious and phishing URLs using Machine Learning.
+- Extract meaningful features from submitted website URLs.
+- Classify URLs using a trained Gradient Boosting Classifier.
+- Provide users with instant prediction results.
+- Display prediction confidence through an intuitive interface.
+- Improve awareness about phishing attacks and online security.
+- Develop a responsive and user-friendly cybersecurity application.
 
 ---
 
 ## ✨ Key Features
 
-- **URL Scanning:** Users can enter a URL for security analysis.
-- **Phishing Detection:** Identifies suspicious URLs using predefined rules or machine learning.
-- **URL Feature Analysis:** Examines URL characteristics such as length, special characters, IP addresses, and suspicious patterns.
-- **Instant Results:** Displays the analysis result in an easy-to-understand format.
-- **User-Friendly Interface:** Simple and intuitive design.
-- **Security Awareness:** Helps users recognize potentially dangerous links.
+- **URL Scanning:** Users can enter a website URL for security analysis.
+- **Machine Learning Detection:** Uses a trained Gradient Boosting Classifier to identify potentially malicious URLs.
+- **URL Feature Extraction:** Analyzes URL characteristics and patterns to generate input features for the ML model.
+- **Instant Results:** Displays the prediction immediately after URL analysis.
+- **Prediction Confidence:** Shows a percentage associated with the model's prediction.
+- **Modern User Interface:** Responsive dark-themed cybersecurity dashboard.
+- **Security Warning:** Provides an additional confirmation before opening URLs classified as potentially suspicious.
+- **User-Friendly Design:** Simple and intuitive interface for easy URL scanning.
 
 ---
 
 ## 🛠️ Tech Stack
 
-The following technologies are planned for the development of PhishShield:
-
 | Technology | Purpose |
 |---|---|
+| Python | Backend development and URL processing |
+| Flask | Web application framework |
+| Scikit-learn | Machine Learning model and prediction |
+| Gradient Boosting Classifier | Phishing URL classification |
+| NumPy | Numerical operations |
+| Pandas | Dataset processing and analysis |
 | HTML5 | Structure of the web application |
 | CSS3 | Styling and responsive design |
-| JavaScript | Frontend functionality |
-| Python | Backend development and URL analysis |
-| Flask | Backend API development |
-| Scikit-learn | Machine learning-based phishing detection |
-| Pandas | Dataset processing and analysis |
-| NumPy | Numerical operations |
+| JavaScript | Frontend functionality and result visualization |
+| Pickle | Saving and loading the trained ML model |
 | Git & GitHub | Version control and collaboration |
-
-*The technology stack may evolve as the project develops.*
 
 ---
 
 ## ⚙️ How It Works
 
-1. **User Input:** The user enters a website URL into PhishShield.
-2. **URL Processing:** The application extracts the URL and prepares it for analysis.
-3. **Feature Extraction:** Relevant URL characteristics are extracted.
-4. **Detection:** The system analyzes the extracted features using detection rules or a trained machine learning model.
-5. **Result Generation:** The application classifies the URL as Safe or Suspicious.
-6. **Display:** The result is displayed to the user.
+1. **User Input:** The user enters a website URL into the PhishShield scanner.
+2. **URL Processing:** The Flask backend receives the submitted URL.
+3. **Feature Extraction:** The application extracts relevant characteristics from the submitted URL.
+4. **Machine Learning Prediction:** The extracted features are passed to the trained Gradient Boosting Classifier.
+5. **Classification:** The model predicts whether the submitted URL is likely safe or phishing.
+6. **Result Generation:** The application generates a prediction and associated confidence percentage.
+7. **Display:** The result is displayed through the web interface, allowing users to make informed browsing decisions.
 
 ---
 
 ## 🔍 URL Features for Analysis
 
-Some of the characteristics that can help identify phishing URLs include:
+PhishShield uses different URL characteristics to identify patterns commonly associated with phishing websites.
+
+Some of the characteristics include:
 
 - URL length
 - Presence of IP addresses instead of domain names
-- Excessive use of special characters
-- Presence of suspicious keywords
 - Number of subdomains
-- Use of URL shortening services
-- Presence of HTTPS
-- Suspicious domain patterns
+- Special characters in URLs
+- Suspicious keywords and URL patterns
+- Domain-related characteristics
+- HTTPS and HTTP usage
+- URL structure and formatting
+
+These features are processed and used by the trained Machine Learning model to generate predictions.
+
+---
+
+## 🧠 Machine Learning Model
+
+PhishShield uses a **Gradient Boosting Classifier** for phishing URL detection.
+
+Gradient Boosting is an ensemble Machine Learning algorithm that combines multiple decision trees to generate predictions.
+
+The trained model analyzes extracted URL features and classifies submitted URLs based on patterns learned from labelled training data.
+
+The trained model is stored in Pickle format and loaded by the Flask application to perform predictions.
 
 ---
 
@@ -91,56 +111,25 @@ Some of the characteristics that can help identify phishing URLs include:
 ```text
 PhishShield/
 │
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
+├── app.py
 │
-├── backend/
-│   ├── app.py
-│   ├── url_analyzer.py
-│   └── model/
+├── feature.py
 │
-├── dataset/
-│   └── phishing_dataset.csv
+├── pickle/
+│   └── model.pkl
+│
+├── static/
+│   └── styles.css
+│
+├── templates/
+│   └── index.html
+│
+├── phishing.csv
 │
 ├── requirements.txt
-├── README.md
-└── .gitignore
-```
-
-*The directory structure is a proposed structure and can be modified during development.*
-
----
-
-## 🚀 Future Enhancements
-
-- Integrate advanced machine learning models for better detection.
-- Use real-time threat intelligence and malicious URL databases.
-- Add browser extension support.
-- Display detailed URL risk analysis.
-- Maintain a history of previously scanned URLs.
-- Improve detection accuracy using larger and more diverse datasets.
-- Add domain reputation and SSL certificate analysis.
-
----
-
-## 👥 Team
-
-Developed as a small cybersecurity project to explore phishing detection, web security, and machine learning.
-
----
-
-## ⚠️ Disclaimer
-
-PhishShield is an educational cybersecurity project. Its predictions are based on the detection techniques implemented in the application and should not be considered a guarantee of website safety.
-
-Always exercise caution when visiting unknown websites or sharing sensitive information online.
-
----
-
-## ⭐ Support
-
-If you find this project interesting, consider giving the repository a ⭐ on GitHub!
-
-**Stay Alert. Stay Secure. Stay Protected with PhishShield. 🛡️**
+│
+├── Phishing URL Detection.ipynb
+│
+├── .gitignore
+│
+└── README.md
